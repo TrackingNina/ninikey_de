@@ -1,5 +1,4 @@
 const std = @import("std");
-const builtin = @import("builtin");
 
 const microzig = @import("microzig");
 
@@ -51,21 +50,5 @@ pub fn build(b: *std.Build) void {
     const firmware_uf2 = firmware.get_emitted_bin(.{ .uf2 = .{ .family_id = .RP2040 } });
     b.addNamedLazyPath("firmware_uf2", firmware_uf2);
 
-    const flash_mount_step = b.step("flash_mount", "Build and flash through a mounted RP2 bootloader volume");
-    const flash_mount_command = b.addSystemCommand(&.{ "sh", "-c", "until diskutil info \"$2\" >/dev/null 2>&1; do sleep 0.2; done; sleep 0.5; cp \"$1\" \"$2/firmware.uf2\" && sync", "sh" });
-    flash_mount_command.addFileArg(firmware_uf2);
-    flash_mount_command.addArg(b.option([]const u8, "flash-mount", "Mounted RP2 bootloader volume") orelse "/Volumes/RPI-RP2");
-    flash_mount_command.has_side_effects = true;
-    flash_mount_step.dependOn(&flash_mount_command.step);
-
-    const flash_pt_step = b.step("flash_pt", "Build and flash with picotool");
-    const flash_pt_command = @import("zigmkay_firmware").addPicotoolFlash(b, firmware_dep, firmware_uf2);
-    flash_pt_step.dependOn(&flash_pt_command.step);
-
-    const flash_step = b.step("flash", "Build and flash using the host default");
-    if (builtin.os.tag == .macos) {
-        flash_step.dependOn(&flash_pt_command.step);
-    } else {
-        flash_step.dependOn(&flash_mount_command.step);
-    }
+    _ = @import("zigmkay_firmware").addFlashSteps(b, firmware_dep, firmware_uf2);
 }

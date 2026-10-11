@@ -7,7 +7,6 @@ US-International OS layout on Windows/Linux.
 ## Prerequisites
 
 - [Zig `0.17.0`](https://ziglang.org/download/)
-- [`picotool`](https://github.com/raspberrypi/picotool) for the default macOS flashing workflow
 
 ## Build
 
@@ -26,9 +25,10 @@ Put the board into bootloader mode, then:
 zig build flash               # add -Dkeycaprio=0.6 for the older PCB
 ```
 
-On macOS this uses `picotool`, elsewhere it copies the UF2 to the mounted
-bootloader volume. Pick a method explicitly with `zig build flash_pt` or
-`zig build flash_mount` (`-Dflash-mount=/path/to/volume` overrides the mount point).
+On Windows this copies the UF2 to the mounted bootloader volume (picotool needs
+a WinUSB driver there), elsewhere it uses `picotool`, which is built from source.
+Pick a method explicitly with `zig build flash_pt` or `zig build flash_mount`
+(`-Dflash-mount=<path|label>` overrides the default `RPI-RP2` volume).
 
 ## Layout
 
