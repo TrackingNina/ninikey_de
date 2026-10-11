@@ -9,9 +9,8 @@
             .hash = "microzig-0.17.12-D20YSbDKAAA_aWCmmydsldbUrhmCUzNFqseEIAE4__5g",
         },
         .zigmkay_firmware = .{
-            .url = "git+https://github.com/EuroZig/zigmkay_firmware.git#e310ab36bbbd5baa859e5363fda6a7edea7e78e7",
-            .hash = "zigmkay_firmware-0.1.0-EZ4qw9maOwBXaml5p7CItmIsEqRIONsOn54K9I5MpcQH",
-            // .path = "../zigmkay_firmware",
+            .url = "git+https://github.com/EuroZig/zigmkay_firmware.git#f379976141f65391b851c4e725cc2af341ff776a",
+            .hash = "zigmkay_firmware-0.1.0-EZ4qw6y8OwAgU5pUlERl8n2Xc9OTqIwCqpRkwyfkEk9_",
         },
     },
     .paths = .{
