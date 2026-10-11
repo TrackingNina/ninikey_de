@@ -1,8 +1,8 @@
-# ZigMKay Keycaprio US-International
+# ZigMKay Keycaprio German QWERTZ
 
 Minimal [ZigMKay](https://github.com/EuroZig/zigmkay_firmware) firmware for the
-[Leonardo Keycaprio](https://github.com/StephanMoeller/Leonardo-KeycapRio/) (34 keys, unibody, RP2040) with a QWERTY keymap for the
-US-International OS layout on Windows/Linux.
+[Leonardo Keycaprio](https://github.com/StephanMoeller/Leonardo-KeycapRio/) (34 keys, unibody, RP2040) with a QWERTZ keymap for the
+German OS layout on Windows/Linux.
 
 ## Prerequisites
 
